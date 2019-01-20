@@ -20,7 +20,16 @@ const getProducts = async () => {
   let response = JSON.parse(await request(options));
   response = response.products;
 
-  console.log(response.map(product => product.title));
+  const newArr = [];
+  for (var i = 0; i < response.length; i++) {
+    newArr.push(response[i].variants);
+  }
+
+  for (var i = 0; i < newArr.length; i++) {
+    for (var j = 0; j < newArr[i].length; j++) {
+      console.log(newArr[i][j].id);
+    }
+  }
 };
 
 getProducts();
